@@ -1,0 +1,40 @@
+$green: #08a652
+$green-active: #44c77f
+$white: #ffffff
+$black: #2c3136
+$semi-black: #58616b
+$black-active: #4b545c
+$red: #e34234
+$light-gray: #ced3db
+
+@mixin transition($speed: 300ms)
+  transition: $speed ease-in-out
+  &:hover
+    transition: $speed ease-in-out
+
+
+body
+  font-family: 'Open Sans', sans-serif !important
+
+
+.button-primary
+  @include transition()
+  color: $white
+  background: $green
+  border: none
+  outline: none
+  border-radius: 4px
+  &:hover
+    background: $green-active
+
+
+.button-hero
+  padding: 8px 20px
+  font-size: 15px
+  font-weight: bold
+
+.link
+  @include transition()
+  text-decoration: none
+
+

@@ -1,0 +1,38 @@
+.data
+  width: 200px!important
+  height: 200px!important
+  border-radius: 50%
+  display: flex
+  justify-content: center
+  align-items: center
+  flex-direction: column
+  span
+    display: block
+    color: $white
+    font-size: 16px
+    font-weight: bold
+    text-align: center
+
+
+.good
+  @extend .data
+  background: $green
+  transform: translateY(30px)
+
+.bad
+  @extend .data
+  width: 250px!important
+  height: 250px!important
+  background: $red
+
+.all
+  @extend .data
+  background: $light-gray
+  transform: translateY(30px)
+
+.doc
+  @extend .data
+  background: $green-active
+  span
+    font-size: 16px
+    text-align: center
