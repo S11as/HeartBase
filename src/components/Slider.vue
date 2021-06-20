@@ -10,7 +10,7 @@
       </div>
       <div class="row mt-5">
         <div class="col">
-          <input type="range" min="1" max="100" v-model="current" @change="upd" :class="styles.slider" id="myRange">
+          <input type="range" min="1" max="100" v-model="current" @change="slideAction()" :class="styles.slider" id="myRange">
         </div>
       </div>
   </div>
@@ -20,7 +20,9 @@
 import styles from "./Slider.module.sass"
 import {ref} from "vue"
 import {mapState} from 'vuex'
+// eslint-disable-next-line no-unused-vars
 import {UPDATE_CHART} from "@/store/types"
+// eslint-disable-next-line no-unused-vars
 import store from "@/store/store";
 export default {
   name: "Slider",
@@ -33,15 +35,18 @@ export default {
       bad: state=>state.statistics.covid
     })
   },
-  setup() {
+  emits:[
+      'slide'
+  ],
+  setup(props, {emit}) {
     let current = ref(55)
-    function upd(){
-      store.commit(UPDATE_CHART, current.value)
+    const slideAction = function (){
+      emit('slide', current.value)
     }
     return {
       styles,
-      current,
-      upd
+      slideAction,
+      current
     }
   }
 }

@@ -14,9 +14,13 @@ import useChart from './useChart'
 // eslint-disable-next-line no-unused-vars
 import {SET_NUMBERS} from "@/store/types";
 import store from "@/store/store";
+import {ref, watch} from 'vue'
 export default {
   name: "Chart",
-  setup() {
+  props: {
+    index: [Number]
+  },
+  setup(props) {
     function getRandomArbitrary(min, max) {
       return Math.random() * (max - min) + min;
     }
@@ -29,11 +33,15 @@ export default {
         chart.update();
       }
     }
+    const i = ref(props.index)
+    watch(i, (selection)=>{
+      console.log("we are here", selection)
+    })
     onMounted(() => {
       Chart.register(...registerables);
       let ctx = document.getElementById('myChart').getContext('2d');
       const {numbers, rates, labels, chart, ratesLink, labelsLink} =  useChart(ctx);
-      console.log(numbers)
+
       store.commit(SET_NUMBERS, {...numbers, rates, labels, chart, ratesLink, labelsLink});
     })
     return {

@@ -13,7 +13,7 @@ module.exports = {
                 localsConvention: 'dashesOnly'
             }
         }
-    },
+    }
     // chainWebpack: config => {
     //     config.resolve.alias
     //         .set('Lib', path.resolve(__dirname, 'src/components/lib/'))
